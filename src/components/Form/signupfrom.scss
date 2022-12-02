@@ -11,10 +11,15 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 5.4rem;
-    height: 11rem;
+    height: 14rem;
     position: relative;
-    overflow: hidden;
-
+    overflow-x: hidden;
+    .main-error {
+      position: absolute;
+      z-index: 10;
+      color: red;
+      bottom: 0rem;
+    }
     .box {
       transition: all 0.4s ease-in;
       width: 100%;
@@ -25,6 +30,17 @@ form {
       flex-direction: column;
       align-items: center;
       gap: 5.4rem;
+      .name-input {
+        width: 100%;
+        position: relative;
+        .error {
+          position: absolute;
+          bottom: -2.2rem;
+          left: 1rem;
+          color: red;
+          font-size: 1.5rem;
+        }
+      }
       input {
         width: 100%;
         outline: none;

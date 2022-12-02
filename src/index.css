@@ -67,3 +67,16 @@ body {
 .grid-3-cols {
   grid-template-columns: repeat(3, 1fr);
 }
+
+/* hide number input spin box using CSS */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* For Firefox  */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
