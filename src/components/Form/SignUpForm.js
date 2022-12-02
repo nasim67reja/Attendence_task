@@ -43,6 +43,7 @@ const SignUpForm = () => {
   } = useInput((value) => value.includes("@"));
   const {
     value: enteredPassword,
+    isValid: enteredPasswordIsValid,
     hasError: passwordInputHasError,
     valueChangeHandler: passwordChangedHandler,
     inputBlurHandler: passwordBlurHandler,
@@ -58,6 +59,7 @@ const SignUpForm = () => {
   };
 
   const navigate = useNavigate();
+
   const signUpPostCall = async () => {
     try {
       const data = await axios.post(`${URL}/signup`, {
@@ -72,7 +74,7 @@ const SignUpForm = () => {
       console.log(data);
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
         // document.location.reload();
         //  setSuccessful("");
       }, 1000);
@@ -89,9 +91,7 @@ const SignUpForm = () => {
   const fromSubmitHandler = (event) => {
     event.preventDefault();
 
-    if (passwordInputHasError) return;
-
-    console.log("from submit event run");
+    if (!enteredPasswordIsValid) return;
 
     signUpPostCall();
 

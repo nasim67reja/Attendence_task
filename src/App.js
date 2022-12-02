@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Attendence from "./pages/attendence/Attendence";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+
+// axios.defaults.withCredentials = true;
 
 export const URL = "https://test.nexisltd.com";
 
