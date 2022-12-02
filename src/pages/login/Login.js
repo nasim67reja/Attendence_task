@@ -1,25 +1,23 @@
 import React from "react";
 import "./login.scss";
-import istockphoto from "./../../assets/istockphoto.svg";
-import ultimate from "./../../assets/ultimate.svg";
 import { Link } from "react-router-dom";
+import Email from "../../components/input/Email";
+import Password from "../../components/input/Password";
+import LeftBox from "../../components/other/LeftBox";
 
 const Login = () => {
   return (
     <div className="container login flex-center">
       <div className="flex-center">
-        <div className="left">
-          <div className="image-box">
-            <img src={ultimate} alt="" />
-          </div>
-          <img src={istockphoto} alt="" />
-        </div>
+        <LeftBox />
         <div className="right">
           <h4>Log in Form</h4>
           <form>
-            <input type="email" />
-            <input type="password" />
-            <button type="submit">Log In</button>
+            <Email placeHolder="Write Email Address" />
+            <Password placeHolder="Write Password" />
+            <button className="btn btn-submit" type="submit">
+              Log In
+            </button>
           </form>
           <div className="form-footer">
             <span>Don’t have an account?</span>
