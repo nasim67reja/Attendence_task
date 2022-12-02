@@ -17,8 +17,9 @@ form {
     .main-error {
       position: absolute;
       z-index: 10;
-      color: red;
       bottom: 0rem;
+      font-size: 1.5rem;
+      color: #7e7e7e;
     }
     .box {
       transition: all 0.4s ease-in;
@@ -35,10 +36,11 @@ form {
         position: relative;
         .error {
           position: absolute;
-          bottom: -2.2rem;
+          bottom: -2rem;
           left: 1rem;
-          color: red;
           font-size: 1.5rem;
+          line-height: 15px;
+          color: #7e7e7e;
         }
       }
       input {

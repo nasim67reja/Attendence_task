@@ -3,6 +3,8 @@ import Attendence from "./pages/attendence/Attendence";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 
+export const URL = "https://test.nexisltd.com";
+
 export default function App() {
   return (
     <Routes>

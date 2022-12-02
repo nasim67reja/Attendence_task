@@ -1,13 +1,15 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { URL } from "../../App";
 import useInput from "../../hook/UseInput";
-import Email from "../input/Email";
-import Password from "../input/Password";
 import Arrow from "../other/Arrow";
 import "./signupfrom.scss";
 
 const SignUpForm = () => {
   const [i, setI] = useState(0);
   const [stepIsClear, setStepIsClear] = useState(false);
+
   const {
     value: enteredFirstName,
     isValid: enteredFirstNameIsValid,
@@ -16,16 +18,13 @@ const SignUpForm = () => {
     inputBlurHandler: firstNameBlurHandler,
     reset: resetFirstNameInput,
   } = useInput((value) => value.trim() !== "");
-
   const {
     value: enteredLastName,
-    isValid: enteredLastNameIsValid,
     hasError: lastNameInputHasError,
     valueChangeHandler: lasttNameChangedHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: resetLastNameInput,
   } = useInput((value) => value.trim() !== "");
-
   const {
     value: enteredNumber,
     isValid: enteredNumberIsValid,
@@ -34,7 +33,6 @@ const SignUpForm = () => {
     inputBlurHandler: numberBlurHandler,
     reset: resetNumberInput,
   } = useInput((value) => value.trim() !== "");
-
   const {
     value: enteredEmail,
     isValid: enteredEmailIsValid,
@@ -43,6 +41,13 @@ const SignUpForm = () => {
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
   } = useInput((value) => value.includes("@"));
+  const {
+    value: enteredPassword,
+    hasError: passwordInputHasError,
+    valueChangeHandler: passwordChangedHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPasswordInput,
+  } = useInput((value) => value.length > 7);
 
   const handler = (e, first, second) => {
     e.preventDefault();
@@ -52,9 +57,50 @@ const SignUpForm = () => {
     } else setStepIsClear(true);
   };
 
+  const navigate = useNavigate();
+  const signUpPostCall = async () => {
+    try {
+      const data = await axios.post(`${URL}/signup`, {
+        first_name: enteredFirstName,
+        last_Name: enteredLastName,
+        phone_number: enteredNumber,
+        email: enteredEmail,
+        password: enteredPassword,
+      });
+      //  setIsloading(false);
+      //  setSuccessful("Sign Up successfully");
+      console.log(data);
+
+      setTimeout(() => {
+        navigate("/");
+        // document.location.reload();
+        //  setSuccessful("");
+      }, 1000);
+    } catch (error) {
+      console.log(`error: `, error);
+      //  setIsloading(false);
+      //  setError(error.response.data.message);
+      //  setTimeout(() => {
+      //    setError("");
+      //  }, 3000);
+    }
+  };
+
   const fromSubmitHandler = (event) => {
     event.preventDefault();
+
+    if (passwordInputHasError) return;
+
     console.log("from submit event run");
+
+    signUpPostCall();
+
+    resetEmailInput("");
+    resetFirstNameInput("");
+    resetNumberInput("");
+    resetLastNameInput("");
+    resetPasswordInput("");
+    setI(0);
   };
 
   return (
@@ -136,7 +182,19 @@ const SignUpForm = () => {
           className="box"
           style={{ transform: `translateX(${(2 - i) * 100}%)` }}
         >
-          <Password placeHolder="Write Password" />
+          <div className="name-input">
+            <input
+              type="Password"
+              placeholder="Write Password"
+              onChange={passwordChangedHandler}
+              onBlur={passwordBlurHandler}
+              value={enteredPassword}
+            />
+
+            {passwordInputHasError && (
+              <p className="error">Your password must be 8 character</p>
+            )}
+          </div>
         </div>
       </div>
 
