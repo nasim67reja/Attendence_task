@@ -26,7 +26,10 @@ form {
       border-bottom: 1px solid #a4a4a4;
       padding: 3px 1.5rem;
       font-size: 1.6rem;
-      color: #b4b4b4;
+      color: #343;
+      &:focus {
+        border-bottom: 2px solid #a4a4a4;
+      }
 
       &::placeholder {
         font-weight: 400;
