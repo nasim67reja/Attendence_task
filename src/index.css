@@ -57,15 +57,8 @@ body {
   color: var(--color-primary);
   outline: 2px solid var(--color-primary);
 }
-
-.grid {
-  display: grid;
-}
-.grid-2-cols {
-  grid-template-columns: repeat(2, 1fr);
-}
-.grid-3-cols {
-  grid-template-columns: repeat(3, 1fr);
+.peoples {
+  width: 90%;
 }
 
 /* hide number input spin box using CSS */
@@ -79,4 +72,78 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 1354px) {
+  html {
+    font-size: 50%;
+  }
+  .arrow svg {
+    height: 1.9rem;
+  }
+}
+
+@media (max-width: 1264px) {
+  html {
+    font-size: 45%;
+  }
+  .flex-center {
+    gap: 10rem !important;
+  }
+}
+@media (max-width: 1178px) {
+  html {
+    font-size: 40%;
+  }
+  .flex-center {
+    gap: 6rem !important;
+  }
+  .arrow svg {
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 1005px) {
+  html {
+    font-size: 35%;
+  }
+  .flex-center {
+    gap: 3rem !important;
+  }
+}
+
+@media (max-width: 880px) {
+  html {
+    font-size: 45%;
+  }
+  .flex-center {
+    gap: 3rem !important;
+    flex-direction: column;
+    margin: 2rem 0;
+  }
+  .image-box {
+    transform: translateX(0) !important;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 635px) {
+  .right {
+    width: 75% !important;
+  }
+}
+
+@media (max-width: 510px) {
+  .right {
+    width: 90% !important;
+  }
 }

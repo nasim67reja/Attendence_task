@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+
 import { URL } from "../../App";
 import useInput from "../../hook/UseInput";
 import Arrow from "../other/Arrow";
@@ -16,14 +18,12 @@ const SignUpForm = () => {
     hasError: firstNameInputHasError,
     valueChangeHandler: firstNameChangedHandler,
     inputBlurHandler: firstNameBlurHandler,
-    reset: resetFirstNameInput,
   } = useInput((value) => value.trim() !== "");
   const {
     value: enteredLastName,
     hasError: lastNameInputHasError,
     valueChangeHandler: lasttNameChangedHandler,
     inputBlurHandler: lastNameBlurHandler,
-    reset: resetLastNameInput,
   } = useInput((value) => value.trim() !== "");
   const {
     value: enteredNumber,
@@ -31,7 +31,6 @@ const SignUpForm = () => {
     hasError: numberInputHasError,
     valueChangeHandler: numberChangedHandler,
     inputBlurHandler: numberBlurHandler,
-    reset: resetNumberInput,
   } = useInput((value) => value.trim() !== "");
   const {
     value: enteredEmail,
@@ -39,7 +38,6 @@ const SignUpForm = () => {
     hasError: emailInputHasError,
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput,
   } = useInput((value) => value.includes("@"));
   const {
     value: enteredPassword,
@@ -47,7 +45,6 @@ const SignUpForm = () => {
     hasError: passwordInputHasError,
     valueChangeHandler: passwordChangedHandler,
     inputBlurHandler: passwordBlurHandler,
-    reset: resetPasswordInput,
   } = useInput((value) => value.length > 7);
 
   const handler = (e, first, second) => {
@@ -59,28 +56,29 @@ const SignUpForm = () => {
   };
 
   const navigate = useNavigate();
+  const [isLoading, setIsloading] = useState(false);
 
   const signUpPostCall = async () => {
     try {
-      const data = await axios.post(`${URL}/signup`, {
+      await axios.post(`${URL}/signup`, {
         first_name: enteredFirstName,
         last_Name: enteredLastName,
         phone_number: enteredNumber,
         email: enteredEmail,
         password: enteredPassword,
       });
-      //  setIsloading(false);
+      setIsloading(false);
       //  setSuccessful("Sign Up successfully");
-      console.log(data);
+      // console.log(data);
 
       setTimeout(() => {
         navigate("/login");
         // document.location.reload();
         //  setSuccessful("");
-      }, 1000);
+      }, 100);
     } catch (error) {
       console.log(`error: `, error);
-      //  setIsloading(false);
+      setIsloading(false);
       //  setError(error.response.data.message);
       //  setTimeout(() => {
       //    setError("");
@@ -92,15 +90,8 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (!enteredPasswordIsValid) return;
-
+    setIsloading(true);
     signUpPostCall();
-
-    resetEmailInput("");
-    resetFirstNameInput("");
-    resetNumberInput("");
-    resetLastNameInput("");
-    resetPasswordInput("");
-    setI(0);
   };
 
   return (
@@ -228,7 +219,6 @@ const SignUpForm = () => {
               onClick={(e) =>
                 handler(e, enteredNumberIsValid, enteredEmailIsValid)
               }
-              style={{ transform: "translateX(-1.4rem)" }}
             >
               <span> Next Step</span>
               <span className="arrow">
@@ -237,7 +227,24 @@ const SignUpForm = () => {
             </button>
           ) : (
             <button className="btn btn-signup" type="submit">
-              Sign Up
+              <span> Sign Up</span>
+              {isLoading && (
+                <span
+                  style={{
+                    marginLeft: "1rem",
+                    transform: "translateY(3px)",
+                    display: "inline-block",
+                  }}
+                >
+                  <RotatingLines
+                    strokeColor="black"
+                    strokeWidth="6"
+                    animationDuration="0.75"
+                    width="16"
+                    visible={true}
+                  />
+                </span>
+              )}
             </button>
           )}
         </div>

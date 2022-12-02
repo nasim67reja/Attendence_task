@@ -3,9 +3,11 @@
   min-height: 100vh;
   .flex-center {
     gap: 15rem;
+
     .right {
-      width: 516px;
-      height: 630px;
+      position: relative;
+      width: 51.6rem;
+      height: 63rem;
       background: #ffffff;
       box-shadow: 1px -10px 25px rgba(201, 201, 201, 0.25),
         -1px 10px 25px rgba(147, 147, 147, 0.25);

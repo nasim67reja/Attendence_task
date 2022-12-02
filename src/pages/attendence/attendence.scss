@@ -1,0 +1,40 @@
+.attendance {
+  margin-top: 15rem;
+  .flex-center {
+    h2 {
+      font-weight: 600;
+      font-family: "Roboto";
+      font-size: 3.6rem;
+      line-height: 4.2rem;
+      padding: 1.7rem 4.2rem 1.8rem 5.5rem;
+      color: #ffffff;
+      background: var(--color-primary);
+      border-radius: 5px;
+    }
+  }
+  .list {
+    margin-top: 8rem;
+    display: flex;
+    gap: 6rem;
+    flex-direction: column;
+    list-style: none;
+    font-family: "Roboto";
+    li {
+      display: flex;
+      justify-content: space-between;
+    }
+    .list-header {
+      div {
+        font-weight: 500;
+        color: #000000;
+      }
+    }
+    .employee-info {
+      div {
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #222730;
+      }
+    }
+  }
+}

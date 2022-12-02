@@ -5,10 +5,10 @@ import ultimate from "./../../assets/ultimate.svg";
 const LeftBox = () => {
   return (
     <div className="left">
-      <div className="image-box" style={{ transform: "translateX(-7rem)" }}>
+      <div className="image-box" style={{ transform: "translateX(-6rem)" }}>
         <img src={ultimate} alt="" />
       </div>
-      <img src={istockphoto} alt="" />
+      <img className="peoples" src={istockphoto} alt="" />
     </div>
   );
 };

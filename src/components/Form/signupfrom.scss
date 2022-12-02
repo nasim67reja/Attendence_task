@@ -39,7 +39,7 @@ form {
           bottom: -2rem;
           left: 1rem;
           font-size: 1.2rem;
-          line-height: 15px;
+          line-height: 1.5rem;
           color: #7e7e7e;
         }
       }
@@ -48,7 +48,7 @@ form {
         outline: none;
         border: none;
         border-bottom: 1px solid #a4a4a4;
-        padding: 3px 1.5rem;
+        padding: 0.3rem 1.5rem;
         font-size: 1.6rem;
         color: #b4b4b4;
 
@@ -64,9 +64,9 @@ form {
         width: 100%;
         gap: 1rem;
         span {
-          line-height: 19px;
+          line-height: 1.9rem;
           border-bottom: 1px solid #a4a4a4;
-          padding: 3px 3rem 3px 1.5rem;
+          padding: 0.3rem 3rem 0.3rem 1.5rem;
           font-size: 1.6rem;
           color: #b4b4b4;
         }
@@ -97,7 +97,7 @@ form {
       display: flex;
       gap: 1rem;
       .arrow {
-        transform: translateY(2.3px);
+        transform: translateY(0.23rem);
       }
       &:hover {
         path {
@@ -110,7 +110,7 @@ form {
     display: flex;
     gap: 1rem;
     .arrow {
-      transform: translateY(2.3px);
+      transform: translateY(0.23rem);
     }
     &:hover {
       path {
