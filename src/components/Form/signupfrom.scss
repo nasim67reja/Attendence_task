@@ -1,0 +1,103 @@
+form {
+  margin: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5.4rem;
+
+  .form-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5.4rem;
+    height: 11rem;
+    position: relative;
+    overflow: hidden;
+
+    .box {
+      transition: all 0.4s ease-in;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5.4rem;
+      input {
+        width: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #a4a4a4;
+        padding: 3px 1.5rem;
+        font-size: 1.6rem;
+        color: #b4b4b4;
+
+        &::placeholder {
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 1.9rem;
+          color: #b4b4b4;
+        }
+      }
+      .number-box {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        span {
+          line-height: 19px;
+          border-bottom: 1px solid #a4a4a4;
+          padding: 3px 3rem 3px 1.5rem;
+          font-size: 1.6rem;
+          color: #b4b4b4;
+        }
+        input {
+          &::placeholder {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+  .btn-box {
+    display: flex;
+    .back {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      transform: translateX(-7rem);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      color: #767676;
+    }
+    .btn-signup {
+      transform: translateX(-1.3rem);
+    }
+    .btn-next {
+      display: flex;
+      gap: 1rem;
+      .arrow {
+        transform: translateY(2.3px);
+      }
+      &:hover {
+        path {
+          fill: var(--color-primary);
+        }
+      }
+    }
+  }
+  .btn-next {
+    display: flex;
+    gap: 1rem;
+    .arrow {
+      transform: translateY(2.3px);
+    }
+    &:hover {
+      path {
+        fill: var(--color-primary);
+      }
+    }
+  }
+}
